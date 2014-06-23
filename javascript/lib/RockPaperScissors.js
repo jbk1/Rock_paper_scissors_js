@@ -16,17 +16,19 @@ function Game(player1, player2) {
 
 // this is creating a hash nested inside a hash (called an object in JS) and defines what each 'key object' 'beats', with 1st dimension containing the object in question and the 2nd dimension containing the value of what the object beats assigned against a key of 'beats'
 Game.prototype.PAIRS = {
-    rock:     { beats: 'scissors' },
-    paper:    { beats: 'rock' },
-    scissors: { beats: 'paper' }
-  };
+    rock:     { beats: ['scissors', 'lizard']},
+    paper:    { beats: ['rock', 'spock']},
+    scissors: { beats: ['paper', 'lizard']},
+    spock:		{ beats: ['scissors', 'rock']},
+    lizard:		{ beats: ['spock', 'paper']}
+      };
   
 Game.prototype.winner = function() {
  // declaring that the method isSamePick returns true, retun 'null', surely should return something, ie 'game draw' or somthing, as opposed to null?
   if(this.isSamePick()) return null;
 
 // this looks into the PAIRS hash, returns the 1st level key that's equiv to player1's 'pick', which is into the 2nd level, then returns the value assigned to the beats key. If this value is equivalent to player2's pick then it returns player1 as the winner, else it returns player2. 
-  if(this.PAIRS[this.player1.pick]['beats'] === this.player2.pick){
+  if(this.PAIRS[this.player1.pick]['beats'].indexOf(this.player2.pick) >= 0){
   	return this.player1;
   }
   else {
@@ -39,6 +41,6 @@ Game.prototype.isSamePick = function() {
 	return this.player1.pick === this.player2.pick;
 };
 
-
+// Game.prototype.callDraw = function() {}
 
 
