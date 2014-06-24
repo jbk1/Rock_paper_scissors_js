@@ -1,0 +1,55 @@
+<!doctype>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="public/css/stylesheet.css"> 
+    <title>Rock Paper Scissors Lizard Spock</title>
+    
+  </head>
+  <body>
+    <h1>Rock Paper Scissors Lizard Spock</h1>
+    <div class='choices'>
+      <img src="public/images/rock.png">
+      <img src="public/images/paper.png">
+      <img src="public/images/scissors.png">
+      <img src="public/images/lizard.png">
+      <img src="public/images/spock.png">
+    </div>
+    <h2 id='results'> Hello world </h2>
+
+    <script src='lib/Player.js'></script>
+    <script src='lib/Game.js'></script>
+    <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+    
+    <script>
+     $(document).ready(function() {
+        var James = new Player('James');
+        var Alex = new Player('Alex');
+        var game = new Game(James, Alex);
+
+      jQuery('.choices img').on('click', function() {
+        James.picks('rock');
+        Alex.picks('scissors');
+        $('#results').html(game.winningMessage());
+      })
+     })
+
+
+    // {
+    //     var p1 = new Player('Alex');
+    //     var p2 = new Player('Roi');
+    //     var game = new Game(p1, p2)
+
+    //     $('.choices img').on('click', function(){
+    //       p1.picks($(this).data('pick'));
+    //       p2.picks('rock');
+
+    //       $('<li>' + game.winningMessage() + '</li>').prependTo('#results').slideDown();
+
+    //       $('li:gt(3)').fadeOut(function(){
+    //         $(this).remove();
+    //       });
+    //     })
+    //   })
+    // </script>
+  </body>
+</html>
